@@ -1117,40 +1117,61 @@ for(let i=0;i<20;i++){
  
 // CONTACT FORM
 document.getElementById('submitBtn').addEventListener('click',()=>{
+
   const fname=document.getElementById('fname').value.trim();
   const email=document.getElementById('email').value.trim();
   const project=document.getElementById('project').value;
   const message=document.getElementById('message').value.trim();
   const err=document.getElementById('formError');
+
   if(!fname||!email||!project||!message){
     err.style.display='block';
     setTimeout(()=>err.style.display='none',3500);
     return;
   }
+
+  // EMAILJS INTEGRATION (added, no structure change)
+  const params = {
+    name: fname + " " + (document.getElementById("lname")?.value || ""),
+    email: email,
+    project: project,
+    message: message
+  };
+
+  emailjs.send(
+    "service_6shl42m",
+    "template_dgv4hn9",
+    params
+  ).then(function(response) {
+    console.log("SUCCESS", response);
+  }).catch(function(error) {
+    console.log("ERROR", error);
+  });
+
   const inner=document.getElementById('contactFormInner');
   const success=document.getElementById('formSuccess');
+
   inner.style.opacity='0';inner.style.transform='translateY(10px)';
   inner.style.transition='opacity 0.4s,transform 0.4s';
+
   setTimeout(()=>{
     inner.style.display='none';
     success.classList.add('show');
     success.style.opacity='0';success.style.transform='translateY(10px)';
     success.style.transition='opacity 0.5s,transform 0.5s';
+
     requestAnimationFrame(()=>{
       success.style.opacity='1';success.style.transform='translateY(0)';
     });
   },420);
-});
- 
-// PARALLAX COLLAGE
-document.addEventListener('mousemove',e=>{
-  const cx=e.clientX/window.innerWidth-0.5;
-  const cy=e.clientY/window.innerHeight-0.5;
-  document.querySelectorAll('.collage-elem').forEach((el,i)=>{
-    const d=(i%3+1)*8;
-    el.style.transform=`translate(${cx*d}px,${cy*d}px)`;
-  });
+
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("sD1c47Cp54W7vIivc");
+</script>
+
 </body>
 </html>
