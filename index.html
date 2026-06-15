@@ -349,26 +349,29 @@ section{padding:120px 48px;position:relative;overflow:hidden}
 
 /* FORCE 3 PER ROW */
 .brands-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px;
+  justify-content:flex-start;
 }
 
-/* SMALLER BUT CLEAN SQUARE CARDS */
 .brand-item{
-  aspect-ratio: 1 / 1;
-  padding: 14px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width:180px;
+  height:180px;
 
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  transition: transform 0.25s ease, background 0.25s ease;
+  padding:0;
+  margin:0;
+
+  border:none;
+  background:transparent;
+}
+
+.brand-name{
+  display:none;
 }
 
 .brand-item:hover{
@@ -376,17 +379,16 @@ section{padding:120px 48px;position:relative;overflow:hidden}
   background: rgba(255,255,255,0.06);
 }
 
-/* ROUNDED IMAGE HOLDER (IMPORTANT) */
 .brand-item img{
-  width: 260px;
-  height: 260px;
+  width:90px;
+  height:90px;
+  object-fit:cover;
   object-fit: cover;
-
   padding: 10px;
   border-radius: 14px; /* rounded inner holder */
   background: rgba(255,255,255,0.05);
 
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* TEXT */
@@ -491,8 +493,26 @@ section{padding:120px 48px;position:relative;overflow:hidden}
 .project-card:hover{border-color:rgba(216,195,165,0.25)}
 .project-card.large{grid-column:span 2;display:grid;grid-template-columns:1.2fr 1fr}
 .project-thumb{
-  aspect-ratio:16/10;overflow:hidden;position:relative;
+  position:relative;
+  width:100%;
+  height:280px;
+  overflow:hidden;
+  border-radius:14px 14px 0 0;
 }
+
+.project-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+
+  transition:transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb img{
+  transform:scale(1.05);
+}
+
 .project-card.large .project-thumb{aspect-ratio:unset;height:100%;min-height:280px}
 .project-bg{
   width:100%;height:100%;
@@ -868,20 +888,27 @@ footer{
   }
   
   /* Brands Grid */
-  .brands-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+  .brands-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(120px, 1fr));
+    gap:12px;
+    width:100%;
   }
-  .brand-item {
-    padding: 12px;
+
+  .brand-item{
+    padding:10px;
+    min-height:100px;
   }
-  .brand-item img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 8px;
+
+  .brand-item img{
+    width:60px;
+    height:60px;
+    margin-bottom:6px;
   }
-  .brand-name {
-    font-size: 10px;
+
+  .brand-name{
+    font-size:10px;
+    line-height:1.2;
   }
 
   /* Skills Section */
@@ -1392,74 +1419,102 @@ a, button, .project-card, .skill-item, .tool-card, .menu-btn, .hero-connect-btn,
   </div>
   <div class="project-grid">
  
-    <!-- Large card -->
-    <div class="project-card large reveal">
+    <div class="project-card reveal" style="transition-delay:0.1s">
       <div class="project-thumb">
-        <div class="project-bg project-bg-1">
-          <div class="proj-deco proj-deco-ring" style="width:280px;height:280px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-          <div class="proj-deco proj-deco-ring" style="width:180px;height:180px;top:50%;left:50%;transform:translate(-50%,-50%);border-color:rgba(216,195,165,0.25)"></div>
-          <div class="pv-cross" style="top:30%;left:25%"></div>
-          <div style="font-family:'Caveat',cursive;font-size:90px;font-weight:700;color:rgba(216,195,165,0.1);line-height:1">Id</div>
-        </div>
+        <img src="images/project-01.jpg" alt="Project - 1">
+          <div class="pv-cross" style="top:40%;left:40%"></div>
+          <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
+          <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
       </div>
-      <div class="project-info">
+      <div class="project-info" style="padding:20px">
         <div class="project-num">01</div>
-        <div class="project-cat">Film-making and documentaries</div>
-        <h3 class="project-title">Sahas Amatya - YouTube Journey </h3>
-        <p class="project-desc">A collection of my filmmaking journey, exploring storytelling, cinematography, and editing to transform creative ideas into impactful visual narratives.</p>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
+        <div class="project-arrow">View Project</div>
+      </div>
+    </div>
+ 
+ 
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-thumb">
+        <img src="images/project-02.jpg" alt="Project - 2">
+          <div class="pv-cross" style="top:40%;left:40%"></div>
+          <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
+          <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
+      </div>
+      <div class="project-info" style="padding:20px">
+        <div class="project-num">02</div>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
         <div class="project-arrow">View Project</div>
       </div>
     </div>
  
     <div class="project-card reveal" style="transition-delay:0.1s">
       <div class="project-thumb">
-        <div class="project-bg project-bg-2">
+        <img src="images/project-03.jpg" alt="Project - 3">
           <div class="pv-cross" style="top:40%;left:40%"></div>
           <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
           <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
-        </div>
-      </div>
-      <div class="project-info" style="padding:20px">
-        <div class="project-num">02</div>
-        <div class="project-cat">Motion Graphics</div>
-        <h3 class="project-title">Kinetic Type Film</h3>
-        <p class="project-desc">60-second typographic motion piece exploring the concept of time through layered text animation, sound design, and abstract geometry.</p>
-        <div class="project-arrow">View Project</div>
-      </div>
-    </div>
- 
-    <div class="project-card reveal" style="transition-delay:0.15s">
-      <div class="project-thumb">
-        <div class="project-bg project-bg-3">
-          <div class="proj-deco proj-deco-ring" style="width:150px;height:150px;top:50%;left:50%;transform:translate(-50%,-50%);border-color:rgba(216,195,165,0.2)"></div>
-          <div style="font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(216,195,165,0.25)">Editorial Design</div>
-        </div>
       </div>
       <div class="project-info" style="padding:20px">
         <div class="project-num">03</div>
-        <div class="project-cat">Editorial / Print</div>
-        <h3 class="project-title">Ritual Magazine — Issue 3</h3>
-        <p class="project-desc">Art direction and layout design for an independent culture magazine. A 96-page spread balancing white space, bold typography, and photographic storytelling.</p>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
         <div class="project-arrow">View Project</div>
       </div>
     </div>
+
  
-    <div class="project-card reveal" style="transition-delay:0.2s">
+    <div class="project-card reveal" style="transition-delay:0.1s">
       <div class="project-thumb">
-        <div class="project-bg project-bg-4">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:20px;width:100%;height:100%">
-            <div style="background:rgba(75,63,114,0.3)"></div>
-            <div style="background:rgba(27,27,58,0.6)"></div>
-            <div style="background:rgba(27,27,58,0.4)"></div>
-            <div style="background:rgba(75,63,114,0.2)"></div>
-          </div>
-        </div>
+        <img src="images/project-04.jpg" alt="Project - 4">
+          <div class="pv-cross" style="top:40%;left:40%"></div>
+          <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
+          <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
       </div>
       <div class="project-info" style="padding:20px">
         <div class="project-num">04</div>
-        <div class="project-cat">Digital Illustration</div>
-        <h3 class="project-title">Fragments — Art Series</h3>
-        <p class="project-desc">A personal series of 12 digital collage illustrations exploring identity, memory, and impermanence through layered textures and found imagery.</p>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
+        <div class="project-arrow">View Project</div>
+      </div>
+    </div>
+
+
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-thumb">
+        <img src="images/project-05.jpg" alt="Project - 5">
+          <div class="pv-cross" style="top:40%;left:40%"></div>
+          <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
+          <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
+      </div>
+      <div class="project-info" style="padding:20px">
+        <div class="project-num">05</div>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
+        <div class="project-arrow">View Project</div>
+      </div>
+    </div>
+
+ 
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-thumb">
+        <img src="images/project-06.jpg" alt="Project - 6">
+          <div class="pv-cross" style="top:40%;left:40%"></div>
+          <div style="font-family:'Caveat',cursive;font-size:120px;font-weight:700;color:rgba(216,195,165,0.07);line-height:1;transform:rotate(-20deg)">M</div>
+          <div class="proj-deco" style="bottom:20px;right:20px;width:60px;height:60px;border:1px solid rgba(216,195,165,0.15);transform:rotate(45deg)"></div>
+      </div>
+      <div class="project-info" style="padding:20px">
+        <div class="project-num">06</div>
+        <div class="project-cat">Project type</div>
+        <h3 class="project-title">Project name</h3>
+        <p class="project-desc">Project description goes here.</p>
         <div class="project-arrow">View Project</div>
       </div>
     </div>
