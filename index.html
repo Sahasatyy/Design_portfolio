@@ -21,11 +21,7 @@ body{
   color:var(--beige);
   font-family:'Poppins',sans-serif;
   overflow-x:hidden;
-  @media (min-width:769px){
-  body{
-    cursor:none;
-  }
-}
+  cursor:none;
 }
  
 /* CUSTOM CURSOR */
@@ -744,184 +740,448 @@ footer{
   width:0%;transition:width 0.1s linear;
 }
 
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-@media (max-width: 768px){
+/* ===== MOBILE RESPONSIVE CSS ===== */
+/* (Add this to the existing styles, or replace existing responsive sections) */
 
-  body{
-    cursor:auto;
+/* Base adjustments for all mobile devices */
+@media (max-width: 768px) {
+  /* Hide custom cursor on touch devices */
+  .cursor, .cursor-ring {
+    display: none !important;
+  }
+  body {
+    cursor: auto;
+  }
+  a, button, .project-card, .skill-item, .tool-card, .menu-btn, .hero-connect-btn, .hero-connect-btn-outline, .contact-link, .form-submit {
+    cursor: pointer;
   }
 
-  .cursor,
-  .cursor-ring{
-    display:none;
+  /* Navigation */
+  nav {
+    padding: 16px 20px;
+  }
+  .nav-logo {
+    font-size: 18px;
+  }
+  .menu-btn {
+    padding: 6px 14px;
+    font-size: 10px;
   }
 
-  nav{
-    padding:18px 20px;
+  /* Menu Overlay */
+  .menu-overlay {
+    clip-path: circle(0% at calc(100% - 50px) 35px);
+  }
+  .menu-overlay.open {
+    clip-path: circle(150% at calc(100% - 50px) 35px);
+  }
+  .menu-nav a {
+    font-size: clamp(36px, 10vw, 56px);
+  }
+  .menu-close {
+    top: 18px;
+    right: 24px;
+    font-size: 32px;
+  }
+  .menu-deco {
+    bottom: 20px;
+    left: 20px;
+    font-size: 9px;
   }
 
-  section{
-    padding:80px 20px;
+  /* Hero Section */
+  #hero {
+    min-height: 90vh;
+  }
+  .hero-content {
+    padding: 0 20px;
+    padding-top: 100px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .hero-right {
+    display: none;
+  }
+  .hero-name {
+    font-size: clamp(48px, 12vw, 80px);
+  }
+  .hero-tag {
+    font-size: 9px;
+    margin-bottom: 18px;
+  }
+  .hero-subtitle {
+    font-size: 11px;
+    margin-top: 20px;
+  }
+  .hero-cta-row {
+    margin-top: 30px;
+    gap: 14px;
+  }
+  .hero-connect-btn, .hero-connect-btn-outline {
+    padding: 12px 22px;
+    font-size: 10px;
+  }
+  .hero-scroll-hint {
+    margin-top: 36px;
   }
 
-  /* HERO */
-  .hero-content{
-    grid-template-columns:1fr;
-    text-align:center;
-    gap:40px;
-    padding:100px 20px 40px;
+  /* Section spacing */
+  section {
+    padding: 60px 20px;
+  }
+  .section-title {
+    font-size: clamp(36px, 8vw, 60px);
+    margin-bottom: 16px;
+  }
+  .section-eyebrow {
+    font-size: 9px;
+    margin-bottom: 12px;
   }
 
-  .hero-right{
-    height:280px;
+  /* About Section */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  .about-intro {
+    font-size: clamp(24px, 5vw, 32px);
+    margin-bottom: 20px;
+  }
+  .about-body {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .about-stats {
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .stat-num {
+    font-size: clamp(28px, 6vw, 36px);
+  }
+  .stat-label {
+    font-size: 9px;
+  }
+  .about-philosophy p {
+    font-size: 20px;
+  }
+  
+  /* Brands Grid */
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .brand-item {
+    padding: 12px;
+  }
+  .brand-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 8px;
+  }
+  .brand-name {
+    font-size: 10px;
   }
 
-  .hero-subtitle,
-  .hero-tag,
-  .hero-scroll-hint{
-    justify-content:center;
+  /* Skills Section */
+  .skills-intro {
+    font-size: 13px;
+    margin-bottom: 40px;
+  }
+  .skills-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .skill-item {
+    padding: 14px 0;
+    gap: 14px;
+  }
+  .skill-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  .skill-name {
+    font-size: 12px;
+  }
+  .skill-bar-wrap {
+    width: 60px;
+  }
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .tool-card {
+    padding: 14px 8px;
+  }
+  .tool-logo {
+    width: 32px;
+    height: 32px;
+  }
+  .tool-name {
+    font-size: 8px;
   }
 
-  .hero-cta-row{
-    justify-content:center;
+  /* Projects Section */
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .projects-intro {
+    font-size: 13px;
+    max-width: 100%;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .project-card.large {
+    grid-column: auto;
+  }
+  .project-card.large {
+    display: block;
+  }
+  .project-thumb {
+    aspect-ratio: 16/9;
+  }
+  .project-info {
+    padding: 20px;
+  }
+  .project-title {
+    font-size: clamp(24px, 5vw, 28px);
+  }
+  .project-desc {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .project-num {
+    font-size: 40px;
+    top: 12px;
+    left: 12px;
   }
 
-  /* ABOUT */
-  .about-grid{
-    grid-template-columns:1fr;
-    gap:40px;
+  /* Contact Section */
+  #contact {
+    padding: 60px 20px;
+  }
+  #contact > div[style*="display:grid"] {
+    display: flex !important;
+    flex-direction: column;
+    gap: 40px !important;
+  }
+  .contact-pre {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .contact-heading {
+    font-size: clamp(36px, 8vw, 60px);
+    text-align: left;
+  }
+  .contact-sub {
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .contact-email {
+    font-size: clamp(20px, 4.5vw, 26px);
+  }
+  .contact-links {
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .contact-link {
+    padding: 8px 18px;
+    font-size: 9px;
+  }
+  .contact-form-wrap {
+    padding: 28px 20px;
+    margin-top: 0;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .form-field.full {
+    grid-column: span 1;
+  }
+  .form-label {
+    font-size: 9px;
+  }
+  .form-input, .form-textarea, .form-select {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .form-submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .form-submit {
+    padding: 12px 28px;
+    font-size: 10px;
+  }
+  .form-note {
+    font-size: 10px;
   }
 
-  .about-stats{
-    grid-template-columns:1fr;
-    gap:20px;
+  /* Footer */
+  footer {
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .footer-left, .footer-right {
+    font-size: 10px;
   }
 
-  .brands-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .brand-item img{
-    width:100%;
-    height:auto;
-  }
-
-  /* SKILLS */
-  .skills-layout{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-
-  .tool-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  /* PROJECTS */
-  .projects-header{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:20px;
-  }
-
-  .project-grid{
-    grid-template-columns:1fr;
-  }
-
-  .project-card.large{
-    grid-column:auto;
-    grid-template-columns:1fr;
-  }
-
-  /* CONTACT */
-  #contact{
-    padding:80px 20px !important;
-  }
-
-  #contact > div{
-    grid-template-columns:1fr !important;
-    gap:40px !important;
-  }
-
-  .contact-links{
-    justify-content:flex-start;
-  }
-
-  .contact-form-wrap{
-    padding:25px;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .form-field.full{
-    grid-column:auto;
-  }
-
-  /* FOOTER */
-  footer{
-    flex-direction:column;
-    gap:10px;
-    text-align:center;
-    padding:20px;
-  }
-
-  /* MENU */
-  .menu-nav a{
-    font-size:48px;
-  }
-
-  .menu-close{
-    right:20px;
-  }
-
-  .menu-deco{
-    left:20px;
-    bottom:20px;
+  /* Hide decorative elements on mobile */
+  .about-deco-note, .about-deco-circle, .contact-deco-tl, .contact-deco-br {
+    display: none;
   }
 }
 
-/* EXTRA SMALL PHONES */
-@media (max-width: 480px){
-
-  .hero-name{
-    font-size:64px;
+/* Tablet adjustments (medium screens) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-content {
+    padding: 0 32px;
+    gap: 30px;
   }
-
-  .section-title{
-    font-size:48px;
+  .hero-right {
+    transform: scale(0.85);
+    right: -40px;
   }
-
-  .contact-heading{
-    font-size:48px !important;
+  .about-grid {
+    gap: 50px;
   }
-
-  .brands-grid{
-    grid-template-columns:1fr;
+  .skills-layout {
+    gap: 40px;
   }
-
-  .tool-grid{
-    grid-template-columns:1fr;
+  .project-card.large {
+    grid-column: span 2;
   }
-
-  .hero-right{
-    display:none;
-  }
-
-  @media (min-width:769px){
-  .menu-btn,
-  .hero-connect-btn,
-  .contact-link,
-  .project-card,
-  .skill-item,
-  .tool-card{
-      cursor:none;
+  .contact-form-wrap {
+    padding: 36px;
   }
 }
 
+/* Small mobile (below 480px) */
+@media (max-width: 480px) {
+  nav {
+    padding: 14px 16px;
+  }
+  .nav-logo {
+    font-size: 16px;
+  }
+  .menu-btn {
+    padding: 5px 12px;
+    font-size: 9px;
+  }
+  .hero-content {
+    padding: 0 16px;
+    padding-top: 90px;
+  }
+  .hero-name {
+    font-size: clamp(42px, 11vw, 70px);
+  }
+  .hero-connect-btn, .hero-connect-btn-outline {
+    padding: 10px 18px;
+    font-size: 9px;
+  }
+  section {
+    padding: 50px 16px;
+  }
+  .section-title {
+    font-size: clamp(32px, 7vw, 50px);
+  }
+  .about-stats {
+    gap: 8px;
+  }
+  .stat-num {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+  .brand-item {
+    padding: 10px;
+  }
+  .brand-item img {
+    width: 50px;
+    height: 50px;
+  }
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-form-wrap {
+    padding: 24px 16px;
+  }
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+  }
+  .contact-links {
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    padding: 6px 14px;
+  }
 }
+
+/* Fix for landscape orientation on mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+  #hero {
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+  .hero-content {
+    padding-top: 70px;
+  }
+  .hero-right {
+    display: none;
+  }
+  .about-portrait {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* Ensure smooth scrolling and no overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve tap targets on mobile */
+a, button, .project-card, .skill-item, .tool-card, .menu-btn, .hero-connect-btn, .hero-connect-btn-outline, .contact-link, .form-submit {
+  touch-action: manipulation;
+}
+
+/* Fix for menu overlay on small screens */
+@media (max-width: 768px) {
+  .menu-overlay.open .menu-nav a {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+  .menu-nav li {
+    margin: 4px 0;
+  }
+}
+
+/* Preserve brand grid on mobile exactly 2 columns */
+@media (max-width: 768px) {
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
 </style>
 </head>
 <body>
